@@ -8,6 +8,7 @@ import 'package:responsive_screen/responsive_screen.dart';
 import 'package:ncov19infor/utils/WDscreen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ncov19infor/utils/calculate.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class DetailCountryActivity extends StatefulWidget {
@@ -196,7 +197,59 @@ class _DetailCountryActivityState extends State<DetailCountryActivity> {
                                         fontStyle: FontStyle.italic
                                     )
                                 ) ,
+                              ),
+                             SizedBox(
+                              height: 20,
+                             ),
+                              Text(
+                                'Source',
+                                style: GoogleFonts.cabin(
+                                  textStyle: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22
+                                  )
+                                ),
+
+
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  if ( await canLaunch(state.country.source) ){
+                                    await launch(
+                                      state.country.source,
+                                      forceSafariVC: true,
+                                      forceWebView: true
+                                    );
+                                  }
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(left: 0, right: 0, bottom: 10),
+//                                  padding: const EdgeInsets.all(20),
+
+//                                width: Screen(context),
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    color: Colors.cyan.withOpacity(0.3),
+                                    borderRadius: BorderRadius.circular(10),
+                                    
+                                      
+                                  ),
+                                  child: Text(
+                                    'Tap to see more information of ${state.country.title}',
+                                    style: GoogleFonts.cabin(
+                                      textStyle: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.red,
+                                        fontSize:16
+
+
+                                      )
+                                    ),
+                                  ),
+
+                                ),
                               )
+
 
                             ],
                           ),
