@@ -41,7 +41,6 @@ class _DetailCountryActivityState extends State<DetailCountryActivity> {
             if ( state is DetailCountryStat){
               _refreshController.loadComplete();
               return true;
-
             }
             return false;
           },
@@ -209,8 +208,6 @@ class _DetailCountryActivityState extends State<DetailCountryActivity> {
                                     fontSize: 22
                                   )
                                 ),
-
-
                               ),
                               InkWell(
                                 onTap: () async {
